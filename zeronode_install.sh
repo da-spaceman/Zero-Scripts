@@ -9,6 +9,7 @@ COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/zerocurrencycoin/zero.git'
 COIN_ZIP16='https://github.com/zerocurrencycoin/Zero-Wallets/releases/download/NodeOnly/zero-ubuntu-16.04.zip'
 COIN_ZIP18='https://github.com/zerocurrencycoin/Zero-Wallets/releases/download/NodeOnly/zero-ubuntu-18.04.zip'
+COIN_ZIP20='https://github.com/da-spaceman/Zero-Wallets/releases/download/NodeOnly/zero-ubuntu-20.04.zip'
 COIN_TGZ=''
 COIN_ZIP=''
 COIN_NAME='Zero'
@@ -76,6 +77,11 @@ function download_node() {
   if [[ $(lsb_release -d) == *18.04* ]]; then
     wget -q $COIN_ZIP18
     COIN_ZIP=$(echo $COIN_ZIP18 | awk -F'/' '{print $NF}')
+  fi
+  
+  if [[ $(lsb_release -d) == *20.04* ]]; then
+    wget -q $COIN_ZIP20
+    COIN_ZIP=$(echo $COIN_ZIP20 | awk -F'/' '{print $NF}')
   fi
 
   compile_error
