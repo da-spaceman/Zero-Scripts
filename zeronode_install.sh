@@ -278,9 +278,27 @@ DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o D
 
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 
-apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
-autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
-#>/dev/null 2>&1
+if [[ $(lsb_release -d) != *16.04* ]]; then
+  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
+  autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
+  #>/dev/null 2>&1
+fi
+
+if [[ $(lsb_release -d) != *18.04* ]]; then
+  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
+      build-essential pkg-config libc6-dev m4 g++-multilib \
+      autoconf libtool ncurses-dev unzip git python python-zmq \
+      zlib1g-dev wget bsdmainutils automake curl libgconf-2-4
+  #>/dev/null 2>&1    
+fi
+
+if [[ $(lsb_release -d) != *20.04* ]]; then
+  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
+      build-essential pkg-config libc6-dev m4 g++-multilib \
+      autoconf libtool libncurses-dev unzip git python-is-python2 python3-zmq \ 
+      zlib1g-dev wget bsdmainutils automake curl libgconf-2-4
+  #>/dev/null 2>&1    
+fi
 
 if [ "$?" -gt "0" ]; then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
