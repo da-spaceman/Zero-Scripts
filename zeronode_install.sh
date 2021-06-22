@@ -296,7 +296,7 @@ if [[ $(lsb_release -d) != *20.04* ]]; then
   apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
       build-essential pkg-config libc6-dev m4 g++-multilib \
       autoconf libtool libncurses-dev unzip git python-is-python2 python3-zmq \ 
-      zlib1g-dev wget bsdmainutils automake curl libgconf-2-4 net-tools
+      zlib1g-dev wget bsdmainutils automake curl libgconf-2-4
   #>/dev/null 2>&1    
 fi
 
