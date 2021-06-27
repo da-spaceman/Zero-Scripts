@@ -285,11 +285,9 @@ if [[ $(lsb_release -d) != *16.04* ]]; then
 fi
 
 if [[ $(lsb_release -d) != *18.04* ]]; then
-  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
-      build-essential pkg-config libc6-dev m4 g++-multilib \
-      autoconf libtool ncurses-dev unzip git python python-zmq \
-      zlib1g-dev wget bsdmainutils automake curl libgconf-2-4
-  #>/dev/null 2>&1    
+  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
+  autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
+  #>/dev/null 2>&1  
 fi
 
 if [[ $(lsb_release -d) != *20.04* ]]; then
