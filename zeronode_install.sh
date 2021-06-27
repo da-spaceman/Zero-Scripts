@@ -70,18 +70,18 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
 
   if [[ $(lsb_release -d) == *16.04* ]]; then
-		wget -q $COIN_ZIP16
-		COIN_ZIP=$(echo $COIN_ZIP16 | awk -F'/' '{print $NF}')
+  	wget -q $COIN_ZIP16
+	COIN_ZIP=$(echo $COIN_ZIP16 | awk -F'/' '{print $NF}')
   fi
 
   if [[ $(lsb_release -d) == *18.04* ]]; then
-		wget -q $COIN_ZIP18
-		COIN_ZIP=$(echo $COIN_ZIP18 | awk -F'/' '{print $NF}')
+  	wget -q $COIN_ZIP18
+	COIN_ZIP=$(echo $COIN_ZIP18 | awk -F'/' '{print $NF}')
   fi
   
   if [[ $(lsb_release -d) == *20.04* ]]; then
-		wget -q $COIN_ZIP20
-		COIN_ZIP=$(echo $COIN_ZIP20 | awk -F'/' '{print $NF}')
+  	wget -q $COIN_ZIP20
+	COIN_ZIP=$(echo $COIN_ZIP20 | awk -F'/' '{print $NF}')
   fi
 
   compile_error
@@ -287,7 +287,7 @@ fi
 if [[ $(lsb_release -d) != *18.04* ]]; then
 	apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
 	autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
-  #>/dev/null 2>&1  
+	#>/dev/null 2>&1  
 fi
 
 if [[ $(lsb_release -d) != *20.04* ]]; then
