@@ -70,18 +70,18 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
 
   if [[ $(lsb_release -d) == *16.04* ]]; then
-    wget -q $COIN_ZIP16
-    COIN_ZIP=$(echo $COIN_ZIP16 | awk -F'/' '{print $NF}')
+		wget -q $COIN_ZIP16
+		COIN_ZIP=$(echo $COIN_ZIP16 | awk -F'/' '{print $NF}')
   fi
 
   if [[ $(lsb_release -d) == *18.04* ]]; then
-    wget -q $COIN_ZIP18
-    COIN_ZIP=$(echo $COIN_ZIP18 | awk -F'/' '{print $NF}')
+		wget -q $COIN_ZIP18
+		COIN_ZIP=$(echo $COIN_ZIP18 | awk -F'/' '{print $NF}')
   fi
   
   if [[ $(lsb_release -d) == *20.04* ]]; then
-    wget -q $COIN_ZIP20
-    COIN_ZIP=$(echo $COIN_ZIP20 | awk -F'/' '{print $NF}')
+		wget -q $COIN_ZIP20
+		COIN_ZIP=$(echo $COIN_ZIP20 | awk -F'/' '{print $NF}')
   fi
 
   compile_error
@@ -214,7 +214,7 @@ function get_ip() {
   declare -a NODE_IPS
   for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
   do
-    NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
+		NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
   done
 
   if [ ${#NODE_IPS[@]} -gt 1 ]
@@ -279,22 +279,22 @@ DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o D
 echo -e "Installing required packages, it may take some time to finish.${NC}"
 
 if [[ $(lsb_release -d) != *16.04* ]]; then
-  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
-  autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
-  #>/dev/null 2>&1
+	apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
+	autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
+	#>/dev/null 2>&1
 fi
 
 if [[ $(lsb_release -d) != *18.04* ]]; then
-  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
-  autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
+	apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" build-essential pkg-config libc6-dev m4 g++-multilib \
+	autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake cmake curl
   #>/dev/null 2>&1  
 fi
 
 if [[ $(lsb_release -d) != *20.04* ]]; then
-  apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
-      build-essential pkg-config libc6-dev m4 g++-multilib \
-      autoconf libtool libncurses-dev unzip git python-is-python2 python3-zmq \ 
-      zlib1g-dev wget bsdmainutils automake curl libgconf-2-4
+	apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
+	build-essential pkg-config libc6-dev m4 g++-multilib \
+	autoconf libtool libncurses-dev unzip git python-is-python2 python3-zmq \ 
+	zlib1g-dev wget bsdmainutils automake curl libgconf-2-4
   #>/dev/null 2>&1    
 fi
 
@@ -493,7 +493,7 @@ function important_information() {
 }
 
 function setup_node() {
-  #get_ip
+  get_ip
   create_config
   create_key
   update_config
@@ -509,7 +509,7 @@ clear
 purgeOldInstallation
 createSwapFile
 checks
-# prepare_system
+prepare_system
 getParams
 download_node
 setup_node
