@@ -509,7 +509,7 @@ clear
 purgeOldInstallation
 createSwapFile
 checks
-prepare_system
+# prepare_system
 getParams
 download_node
 setup_node
